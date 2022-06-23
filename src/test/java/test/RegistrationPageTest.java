@@ -30,11 +30,10 @@ public class RegistrationPageTest {
     private static ExtentReports extent;
     private static ExtentTest test;
 
-
     @BeforeSuite
     public void setUpReport(){
 
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/TestReport.html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/registrationReport.html");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Host Name", "Nabila.home-server.local");
@@ -89,8 +88,6 @@ public class RegistrationPageTest {
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
     }
-
-
     @Test(enabled = false)
     public void emailValidation() throws IOException, InterruptedException {
         test = extent.createTest("emailValidation", "Test fail");
@@ -112,7 +109,6 @@ public class RegistrationPageTest {
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
     }
-
     @Test(enabled = false)
     public void RequiredMandatoryFields() throws InterruptedException {
         test = extent.createTest("emailValidation", "Test fail");
@@ -122,7 +118,6 @@ public class RegistrationPageTest {
         registration.clickRegister();
         Thread.sleep(4000);
     }
-
     @Test(enabled = false)
     public void negativeTestingForMandatoryFields() throws InterruptedException, IOException {
         test = extent.createTest("emailValidation", "Test fail");
@@ -144,9 +139,7 @@ public class RegistrationPageTest {
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
-
     }
-
     @Test
     public void negativeTestingForLogin() throws InterruptedException, IOException {
         registration = new Registration(driver);

@@ -26,6 +26,7 @@ import java.time.Duration;
 public class CheckoutTest { 
 
     WebDriver driver;
+
     Registration registration;
     CheckoutPage checkoutPage;
     AddToCart addToCart;
@@ -47,7 +48,6 @@ public class CheckoutTest {
         htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
         htmlReporter.config().setTheme(Theme.DARK);
     }
-
     @BeforeTest
     public void openBrowser() throws IOException {
         driver = SelectBrowser.StartBrowser("Chrome");
@@ -105,47 +105,44 @@ public class CheckoutTest {
         checkoutPage = new CheckoutPage(driver);
         Thread.sleep(20000);
         checkoutPage.switchFrameCard();
-        Thread.sleep(20000);
         checkoutPage.sendCreditCardNumber("3698 521476 9874");
         Thread.sleep(20000);
         checkoutPage.switchFrameName();
-        Thread.sleep(20000);
         checkoutPage.sendName("john fink");
         Thread.sleep(20000);
         checkoutPage.switchFrameDate();
-        Thread.sleep(20000);
         checkoutPage.sendExpDate("06/22");
-        Thread.sleep(20000);
         checkoutPage.switchFrameCode();
-        Thread.sleep(20000);
         checkoutPage.sendSecurityCode("222");
-        Thread.sleep(20000);
         driver.switchTo().parentFrame();
-        Thread.sleep(20000);
         checkoutPage.clickOnPayNow();
         checkoutPage.getErrorMessage();
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
-
     }
+    @Test(priority = 3)
+    public void emptyCheckOutProcess() throws InterruptedException, IOException {
+        test = extent.createTest("completingCheckOutProcess", "Test Passed");
+        checkoutPage = new CheckoutPage(driver);
+        checkoutPage.switchFrameCard();
+        checkoutPage.sendCreditCardNumber("");
+        Thread.sleep(20000);
+        checkoutPage.switchFrameName();
+        Thread.sleep(20000);
+        checkoutPage.sendName("");
+        checkoutPage.switchFrameDate();
+        checkoutPage.sendExpDate("");
+        checkoutPage.switchFrameCode();
+        checkoutPage.sendSecurityCode("");
+        driver.switchTo().parentFrame();
+        checkoutPage.clickOnPayNow();
+        checkoutPage.getErrorMessage();
 
-
-
-
+        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
+    }
 //*[@id="google-analytics-sandbox"]
-
-
-
-
-
-
-
-
-
-
-
-
     @AfterSuite
     public void tearDown()
     {

@@ -33,7 +33,7 @@ public class LoginRegisteredUserTest {
     @BeforeSuite
     public void setUpReport(){
 
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/TestReport.html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/loginTest.html");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Host Name", "Nabila.home-server.local");

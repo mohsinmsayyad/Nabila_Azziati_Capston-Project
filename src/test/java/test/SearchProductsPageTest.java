@@ -33,7 +33,7 @@ public class SearchProductsPageTest {
 
     @BeforeSuite
     public void setUpReport(){
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/TestReport.html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/searchReport.html");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Host Name", "Nabila.home-server.local");
@@ -54,7 +54,7 @@ public class SearchProductsPageTest {
     }
 
     //Search Products on Home page
-    @Test(enabled = false)
+    @Test(priority = 1)
     public void SearchProductOnHomePage() throws IOException {
         test = extent.createTest("SearchProductOnHomePage", "Test Passed");
         searchProduct = new SearchProduct(driver);
@@ -70,7 +70,7 @@ public class SearchProductsPageTest {
     }
 
     //Without entering anything in the search box click on the Search button.
-    @Test
+    @Test(enabled = false)
     public void emptySearch() throws IOException {
         test = extent.createTest("emptySearch", "Test Passed");
         searchProduct = new SearchProduct(driver);

@@ -25,8 +25,9 @@ public class SelectBrowser {
         else if(browsername.equalsIgnoreCase("Chrome"))
         {
             // Set the path for chromedriver.exe
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\nabil\\Desktop\\Selinium\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\nabil\\Desktop\\capstoneProject\\src\\test\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
+
         }
         // ----If the browser is  EdgeIE----
         else if(browsername.equalsIgnoreCase("EdgeExplore"))

@@ -4,14 +4,14 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="13.620">
+           time="5.505">
     <properties></properties>
 
 
 
             <testcase
-                name="emptySearch"
-                time="13.620"
+                name="SearchProductOnHomePage"
+                time="5.505"
                 classname="test.SearchProductsPageTest">
             </testcase>
 </testsuite>
