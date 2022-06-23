@@ -119,6 +119,8 @@ public class RegistrationPageTest {
         //registration.clickAccount();
         registration.clickRegister();
         Thread.sleep(4000);
+        registration.clickRegistration();
+        Thread.sleep(4000);
         String expected = "Sorry! Please try that again.";
         String actual = registration.getErrorMessage();
         Assert.assertEquals(actual,expected);
