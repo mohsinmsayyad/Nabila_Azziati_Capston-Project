@@ -52,12 +52,11 @@ public class RegistrationPageTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
         driver.get("https://www.alexandnova.com/");
     }
-    //New User Registration page
-    @Test(enabled = false)
+    //TC 001 New User Registration page
+    @Test(priority = 1)
     public void NewUserRegistrationPage() throws InterruptedException, IOException {
         test = extent.createTest("NewUserRegistrationPage", "Test Passed");
         registration = new Registration(driver);
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         Thread.sleep(4000);
         registration.clickAccount();
         //Thread.sleep(3000);
@@ -70,6 +69,7 @@ public class RegistrationPageTest {
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screanShots/image.png"));
     }
+    //TC 002 Verify Register New User.
     @Test(enabled = false)
     public void verifyRegistrationUserTest() throws IOException {
         test = extent.createTest("verifyRegistrationUserTest", "Test Passed");
@@ -88,7 +88,8 @@ public class RegistrationPageTest {
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
     }
-    @Test(enabled = false)
+    //TC 003 Email validation
+    @Test(priority = 2)
     public void emailValidation() throws IOException, InterruptedException {
         test = extent.createTest("emailValidation", "Test fail");
         registration = new Registration(driver);
@@ -109,22 +110,27 @@ public class RegistrationPageTest {
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
     }
-    @Test(enabled = false)
+    //TC 004 Required / mandatory fields
+    @Test(priority = 3)
     public void RequiredMandatoryFields() throws InterruptedException {
         test = extent.createTest("emailValidation", "Test fail");
         registration = new Registration(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        registration.clickAccount();
+        //registration.clickAccount();
         registration.clickRegister();
         Thread.sleep(4000);
+        String expected = "Sorry! Please try that again.";
+        String actual = registration.getErrorMessage();
+        Assert.assertEquals(actual,expected);
     }
-    @Test(enabled = false)
+
+    /*@Test(priority = 4)
     public void negativeTestingForMandatoryFields() throws InterruptedException, IOException {
         test = extent.createTest("emailValidation", "Test fail");
         registration = new Registration(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        registration.clickAccount();
-        registration.clickRegister();
+        //registration.clickAccount();
+        //registration.clickRegister();
         Thread.sleep(4000);
         registration.sendFirstName("");
         registration.sendLastName("");
@@ -139,8 +145,10 @@ public class RegistrationPageTest {
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("src/test/resources/screenShots/image.png"));
-    }
-    @Test
+    }*/
+
+    //TC 005 Verify if the password required rules are not satisfied in the password
+    @Test(priority = 4, enabled = false)
     public void negativeTestingForLogin() throws InterruptedException, IOException {
         registration = new Registration(driver);
         registration.clickAccount();
